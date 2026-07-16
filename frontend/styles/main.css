@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f5f7;
+  color: #1a1a1a;
+}
+
+/* ---------- Auth pages ---------- */
+.auth-container {
+  max-width: 360px;
+  margin: 100px auto;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-container h1 {
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-container input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.auth-container button {
+  padding: 10px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.auth-container p {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.navbar-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.logout-btn {
+  padding: 6px 14px;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard {
+  max-width: 700px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#add-habit-btn {
+  padding: 8px 16px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habit-card {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  border-left: 5px solid #4f46e5;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.habit-description {
+  color: #666;
+  font-size: 13px;
+  margin: 6px 0 12px;
+}
+
+.checkin-btn {
+  padding: 6px 14px;
+  background: #eef2ff;
+  color: #4f46e5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.streak-badge {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ---------- Dialog ---------- */
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 360px;
+  width: 90%;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+dialog input,
+dialog textarea {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dialog-actions button {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#cancel-btn {
+  background: #eee;
+}
+
+.dialog-actions button[type="submit"] {
+  background: #4f46e5;
+  color: white;
+}
