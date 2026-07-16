@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard — Habit Tracker</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="dashboard">
+    <div class="dashboard-header">
+      <h2>Your Habits</h2>
+      <button id="add-habit-btn">+ New Habit</button>
+    </div>
+
+    <div id="habit-list" class="habit-list"></div>
+
+    <dialog id="add-habit-dialog">
+      <form id="add-habit-form">
+        <h3>New Habit</h3>
+        <input type="text" id="habit-name" placeholder="Habit name" required />
+        <textarea id="habit-description" placeholder="Description (optional)"></textarea>
+        <input type="color" id="habit-color" value="#4F46E5" />
+        <div class="dialog-actions">
+          <button type="button" id="cancel-btn">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+
+  <script type="module">
+    import { renderNavbar } from "../components/navbar.js";
+    import { renderHabitCard } from "../components/habit-card.js";
+    import { getHabits, createHabit } from "../utils/api.js";
+    import { isLoggedIn } from "../utils/auth.js";
+
+    if (!isLoggedIn()) {
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("navbar-container").appendChild(renderNavbar());
+
+    const habitList = document.getElementById("habit-list");
+    const dialog = document.getElementById("add-habit-dialog");
+
+    async function loadHabits() {
+      habitList.innerHTML = "";
+      const habits = await getHabits();
+      for (const habit of habits) {
+        const card = await renderHabitCard(habit, loadHabits);
+        habitList.appendChild(card);
+      }
+    }
+
+    document.getElementById("add-habit-btn").addEventListener("click", () => dialog.showModal());
+    document.getElementById("cancel-btn").addEventListener("click", () => dialog.close());
+
+    document.getElementById("add-habit-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await createHabit({
+        name: document.getElementById("habit-name").value,
+        description: document.getElementById("habit-description").value,
+        color: document.getElementById("habit-color").value,
+      });
+      dialog.close();
+      e.target.reset();
+      loadHabits();
+    });
+
+    loadHabits();
+  </script>
+</body>
+</html>
