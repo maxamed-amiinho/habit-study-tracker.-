@@ -3,8 +3,7 @@
  * Every other frontend file talks to the backend only through these functions.
  */
 
-// Change this to your deployed Railway URL once the backend is live.
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://habit-study-tracker.onrender.com";
 
 function getAuthToken() {
   return localStorage.getItem("supabase_token");
